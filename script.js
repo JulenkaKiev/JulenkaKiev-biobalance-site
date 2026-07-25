@@ -1,6 +1,6 @@
 // Встав сюди посилання на оплату WayForPay, коли воно буде готове.
 // Поки що всі кнопки "Отримати гайд" ведуть на блок з ціною.
-const PAYMENT_LINK = "";
+const PAYMENT_LINK = "https://secure.wayforpay.com/button/b01aae83be0e4";
 
 if (PAYMENT_LINK) {
   document.querySelectorAll(".js-buy-anchor").forEach((el) => {
