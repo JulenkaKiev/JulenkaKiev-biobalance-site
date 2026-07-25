@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="facebook-domain-verification" content="07cdgzhw7o4y4ysamyu8xftzbrxuuv" />
+<title>Дякуємо за покупку — BioBalance</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1031971483066106');
+fbq('track', 'PageView');
+fbq('track', 'Purchase', {value: 399, currency: 'UAH'});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1031971483066106&ev=Purchase&value=399&currency=UAH&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<style>
+.ty-hero{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--dark);color:var(--cream);padding:60px 20px;text-align:center;position:relative;overflow:hidden}
+.ty-card{position:relative;z-index:1;max-width:560px;width:100%}
+.ty-check{width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));display:flex;align-items:center;justify-content:center;margin:0 auto 28px;box-shadow:0 16px 32px -12px rgba(169,130,47,.55)}
+.ty-check svg{width:36px;height:36px}
+.ty-card h1{font-size:clamp(28px,4.5vw,42px);font-weight:800;color:#fff;margin-bottom:16px;line-height:1.15}
+.ty-card p{color:#cdbfae;font-size:16px;line-height:1.6;max-width:460px;margin:0 auto}
+.ty-download{margin:34px 0 18px}
+.ty-note{font-size:13px;color:#8a7c6c;margin-top:22px}
+.ty-back{display:inline-block;margin-top:28px;font-size:14px;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,161,90,.4)}
+.ty-back:hover{color:var(--gold-soft,#e0bb7c)}
+</style>
+</head>
+<body>
+
+<div id="cursor-glow" aria-hidden="true"></div>
+
+<section class="ty-hero">
+  <canvas id="aurora" aria-hidden="true"></canvas>
+  <div class="ty-card">
+    <div class="ty-check">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 12.5L9.5 18L20 6" stroke="#15100C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="eyebrow light">Оплата пройшла успішно</div>
+    <h1 style="margin-top:16px">Дякуємо! Твій гайд готовий.</h1>
+    <p>Тепер ти можеш одразу завантажити PDF і почати читати — просто натисни кнопку нижче.</p>
+    <div class="ty-download">
+      <a href="assets/BioBalance-GLP1-Guide.pdf" download class="btn btn-gold js-magnetic">Завантажити гайд (PDF) ↓</a>
+    </div>
+    <div class="ty-note">Якщо кнопка не спрацювала або виникли питання — напиши на <a href="mailto:vrednylka@gmail.com" style="color:var(--gold)">vrednylka@gmail.com</a>, відповімо швидко.</div>
+    <a href="index.html" class="ty-back">← Повернутись на головну</a>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
