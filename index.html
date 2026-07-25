@@ -12,6 +12,8 @@
 </head>
 <body>
 
+<div id="cursor-glow" aria-hidden="true"></div>
+
 <div class="marquee-bar" aria-hidden="true">
   <div class="marquee-track">
     <span>БЕЗ ВИСНАЖЛИВИХ ДІЄТ</span><span>·</span><span>ПРОСТОЮ МОВОЮ</span><span>·</span><span>ВІД НУЛЯ</span><span>·</span><span>БЕЗ СТРАХУ Й ХАОСУ</span><span>·</span><span>ТВІЙ ПЕРШИЙ КРОК</span><span>·</span>
@@ -32,16 +34,17 @@
 </header>
 
 <section class="hero" id="hero">
+  <canvas id="aurora" aria-hidden="true"></canvas>
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <div class="eyebrow light">Простий гайд для новачків</div>
-      <h1>Хочеш схуднути, але <em>не знаєш способу</em>, крім виснажливих дієт?</h1>
-      <p class="lead">Немає часу й сил на зал? Багато чула про уколи для схуднення, але страшно й незрозуміло, з чого почати? Цей гайд — для тебе. Простою мовою, від нуля.</p>
-      <div class="cta-row">
-        <a href="#pricing" class="btn btn-gold js-buy-anchor">Хочу розібратися →</a>
+      <div class="eyebrow light word-reveal" style="--i:0">Простий гайд для новачків</div>
+      <h1><span class="word-reveal" style="--i:1">Хочеш</span> <span class="word-reveal" style="--i:2">схуднути,</span> <span class="word-reveal" style="--i:3">але</span> <em class="word-reveal" style="--i:4">не</em> <em class="word-reveal" style="--i:5">знаєш</em> <em class="word-reveal" style="--i:6">способу</em><span class="word-reveal" style="--i:7">,</span> <span class="word-reveal" style="--i:8">крім</span> <span class="word-reveal" style="--i:9">виснажливих</span> <span class="word-reveal" style="--i:10">дієт?</span></h1>
+      <p class="lead word-reveal" style="--i:11">Немає часу й сил на зал? Багато чула про уколи для схуднення, але страшно й незрозуміло, з чого почати? Цей гайд — для тебе. Простою мовою, від нуля.</p>
+      <div class="cta-row word-reveal" style="--i:12">
+        <a href="#pricing" class="btn btn-gold js-buy-anchor js-magnetic">Хочу розібратися →</a>
         <a href="#inside" class="btn-ghost">Що всередині ↓</a>
       </div>
-      <div class="trust">
+      <div class="trust word-reveal" style="--i:13">
         <span><b>36</b> сторінок</span>
         <span>Простою мовою</span>
         <span>З нуля, навіть якщо новачок</span>
@@ -49,7 +52,9 @@
     </div>
     <div class="hero-art">
       <div class="hero-badge">-60%<small>ЗНИЖКА</small></div>
-      <img class="book" src="assets/page_01.jpg" alt="Обкладинка гайду">
+      <div class="book-tilt">
+        <img class="book" src="assets/page_01.jpg" alt="Обкладинка гайду">
+      </div>
     </div>
   </div>
 </section>
@@ -59,10 +64,10 @@
     <h2 class="center pf">Знайомо?</h2>
     <p class="sub center">Ти не одна. Через це проходять тисячі жінок — і справа зовсім не у «слабкій силі волі».</p>
     <div class="pain-grid">
-      <div class="pain-card reveal"><div class="ic">🥗</div><p>Пробувала все — дієти, підрахунок калорій, марафони схуднення. Вага йде, а потім повертається ще й із «друзями».</p></div>
-      <div class="pain-card reveal"><div class="ic">🏃‍♀️</div><p>На зал і виснажливі тренування просто немає ні часу, ні сил. Життя, робота, дім — і так по колу.</p></div>
-      <div class="pain-card reveal"><div class="ic">💉</div><p>Чула про уколи для схуднення — але страшно, незрозуміло і здається «це не для мене».</p></div>
-      <div class="pain-card reveal"><div class="ic">🤯</div><p>В інтернеті — тисячі суперечливих порад, страшилок і відгуків. Голова йде обертом, а ясності немає.</p></div>
+      <div class="pain-card reveal" style="--i:0"><div class="ic">🥗</div><p>Пробувала все — дієти, підрахунок калорій, марафони схуднення. Вага йде, а потім повертається ще й із «друзями».</p></div>
+      <div class="pain-card reveal" style="--i:1"><div class="ic">🏃‍♀️</div><p>На зал і виснажливі тренування просто немає ні часу, ні сил. Життя, робота, дім — і так по колу.</p></div>
+      <div class="pain-card reveal" style="--i:2"><div class="ic">💉</div><p>Чула про уколи для схуднення — але страшно, незрозуміло і здається «це не для мене».</p></div>
+      <div class="pain-card reveal" style="--i:3"><div class="ic">🤯</div><p>В інтернеті — тисячі суперечливих порад, страшилок і відгуків. Голова йде обертом, а ясності немає.</p></div>
     </div>
     <p class="pain-turn reveal">Проблема не у тобі. Проблема — у тому, що <b>ніхто не пояснив просто</b>. Зараз пояснимо.</p>
   </div>
@@ -75,9 +80,9 @@
     <p class="lead2">Якщо коротко — це <b>сучасні препарати, які зменшують апетит</b>. З ними ти їси менше й наїдаєшся швидше, без постійного відчуття голоду та зривів. Саме про них говорить весь світ.</p>
     <p class="known">Ozempic, Wegovy, Mounjaro, Saxenda — це все <b>звідси</b>. Різні назви, але суть одна: допомогти контролювати апетит і вагу.</p>
     <div class="how">
-      <div class="how-card reveal"><div class="ic">🍽️</div><h3>Менший апетит</h3><p>Ти перестаєш думати про їжу цілий день і легше зупиняєшся вчасно.</p></div>
-      <div class="how-card reveal"><div class="ic">⚖️</div><h3>Стабільне схуднення</h3><p>Вага йде поступово й без вічного почуття, що ти на голодуванні.</p></div>
-      <div class="how-card reveal"><div class="ic">🧠</div><h3>Без мук і зривів</h3><p>Не сила волі, а сучасний підхід. Тому це працює там, де дієти зривались.</p></div>
+      <div class="how-card reveal" style="--i:0"><div class="ic">🍽️</div><h3>Менший апетит</h3><p>Ти перестаєш думати про їжу цілий день і легше зупиняєшся вчасно.</p></div>
+      <div class="how-card reveal" style="--i:1"><div class="ic">⚖️</div><h3>Стабільне схуднення</h3><p>Вага йде поступово й без вічного почуття, що ти на голодуванні.</p></div>
+      <div class="how-card reveal" style="--i:2"><div class="ic">🧠</div><h3>Без мук і зривів</h3><p>Не сила волі, а сучасний підхід. Тому це працює там, де дієти зривались.</p></div>
     </div>
     <div class="myth reveal">Це <b>не «чарівна пігулка»</b> і не голодування. Це інструмент — і в гайді ти дізнаєшся, як користуватись ним <b>правильно й безпечно</b>.</div>
   </div>
@@ -91,12 +96,12 @@
       <p>36 сторінок простою мовою. Без складних термінів і «води».</p>
     </div>
     <div class="steps">
-      <div class="step reveal"><div class="step-n">01</div><h3>Що це взагалі таке</h3><p>Розберешся, які бувають препарати й чим вони відрізняються — простими словами.</p></div>
-      <div class="step reveal"><div class="step-n">02</div><h3>Який обрати</h3><p>Найвідоміші препарати поруч — щоб зрозуміти, на що взагалі дивитися.</p></div>
-      <div class="step reveal"><div class="step-n">03</div><h3>Аналізи перед стартом</h3><p>Що варто перевірити заздалегідь, щоб не нашкодити собі.</p></div>
-      <div class="step reveal"><div class="step-n">04</div><h3>Як не помилитися з дозою</h3><p>Чому починають з малого і як тіло звикає без зайвих побічок.</p></div>
-      <div class="step reveal"><div class="step-n">05</div><h3>Як почати правильно</h3><p>Прості кроки, від яких залежить, чи буде результат стійким.</p></div>
-      <div class="step reveal"><div class="step-n">06</div><h3>Бонус: інші пептиди</h3><p>Для шкіри, волосся, енергії та відновлення — коротко й по суті.</p></div>
+      <div class="step reveal" style="--i:0"><div class="step-n">01</div><h3>Що це взагалі таке</h3><p>Розберешся, які бувають препарати й чим вони відрізняються — простими словами.</p></div>
+      <div class="step reveal" style="--i:1"><div class="step-n">02</div><h3>Який обрати</h3><p>Найвідоміші препарати поруч — щоб зрозуміти, на що взагалі дивитися.</p></div>
+      <div class="step reveal" style="--i:2"><div class="step-n">03</div><h3>Аналізи перед стартом</h3><p>Що варто перевірити заздалегідь, щоб не нашкодити собі.</p></div>
+      <div class="step reveal" style="--i:3"><div class="step-n">04</div><h3>Як не помилитися з дозою</h3><p>Чому починають з малого і як тіло звикає без зайвих побічок.</p></div>
+      <div class="step reveal" style="--i:4"><div class="step-n">05</div><h3>Як почати правильно</h3><p>Прості кроки, від яких залежить, чи буде результат стійким.</p></div>
+      <div class="step reveal" style="--i:5"><div class="step-n">06</div><h3>Бонус: інші пептиди</h3><p>Для шкіри, волосся, енергії та відновлення — коротко й по суті.</p></div>
     </div>
   </div>
 </section>
@@ -158,15 +163,15 @@
       <p>Повний доступ до всіх 36 сторінок — одразу після оплати.</p>
     </div>
     <div class="preview-grid">
-      <div class="preview-card reveal">
+      <div class="preview-card reveal" style="--i:0">
         <img src="assets/page_02.jpg" alt="Сторінка гайду">
         <div class="lock"><span class="lock-ico">🔒</span><span>Повний доступ<br>після оплати</span></div>
       </div>
-      <div class="preview-card reveal">
+      <div class="preview-card reveal" style="--i:1">
         <img src="assets/page_03.jpg" alt="Сторінка гайду">
         <div class="lock"><span class="lock-ico">🔒</span><span>Повний доступ<br>після оплати</span></div>
       </div>
-      <div class="preview-card reveal">
+      <div class="preview-card reveal" style="--i:2">
         <img src="assets/page_36.jpg" alt="Сторінка гайду">
         <div class="lock"><span class="lock-ico">🔒</span><span>Повний доступ<br>після оплати</span></div>
       </div>
@@ -205,10 +210,10 @@
   <div class="wrap">
     <div class="sec-head"><h2 class="pf">Що ти отримаєш після прочитання</h2></div>
     <div class="res-grid">
-      <div class="res-card reveal"><div class="ic">🧭</div><h3>Ясність</h3><p>Нарешті розумієш, що це таке і як працює.</p></div>
-      <div class="res-card reveal"><div class="ic">🛡️</div><h3>Безпеку</h3><p>Знаєш, які аналізи здати й чого уникати.</p></div>
-      <div class="res-card reveal"><div class="ic">📋</div><h3>Простий план</h3><p>Розумієш кроки замість здогадок і страху.</p></div>
-      <div class="res-card reveal"><div class="ic">💛</div><h3>Впевненість</h3><p>Дієш спокійно, без хаосу в голові.</p></div>
+      <div class="res-card reveal" style="--i:0"><div class="ic">🧭</div><h3>Ясність</h3><p>Нарешті розумієш, що це таке і як працює.</p></div>
+      <div class="res-card reveal" style="--i:1"><div class="ic">🛡️</div><h3>Безпеку</h3><p>Знаєш, які аналізи здати й чого уникати.</p></div>
+      <div class="res-card reveal" style="--i:2"><div class="ic">📋</div><h3>Простий план</h3><p>Розумієш кроки замість здогадок і страху.</p></div>
+      <div class="res-card reveal" style="--i:3"><div class="ic">💛</div><h3>Впевненість</h3><p>Дієш спокійно, без хаосу в голові.</p></div>
     </div>
   </div>
 </section>
@@ -231,7 +236,7 @@
         <span class="price-new">399<small> грн</small></span>
       </div>
       <div class="price-save">Ти економиш 600 грн</div>
-      <a href="#pricing" class="btn btn-gold btn-wide js-buy-anchor">Купити гайд зараз →</a>
+      <a href="#pricing" class="btn btn-gold btn-wide js-buy-anchor js-magnetic">Купити гайд зараз →</a>
       <div class="btn-note">🔒 Безпечна оплата через WayForPay · Доступ до PDF надсилається одразу після оплати</div>
     </div>
   </div>
@@ -254,7 +259,7 @@
   <div class="wrap center">
     <h2 class="pf">Твоя ясність починається з одного рішення</h2>
     <p>Досить блукати в здогадках, страху й суперечливих порадах. Розберися просто — і зроби перший крок до бажаної ваги вже сьогодні.</p>
-    <a href="#pricing" class="btn btn-gold js-buy-anchor">Забрати гайд зі знижкою →</a>
+    <a href="#pricing" class="btn btn-gold js-buy-anchor js-magnetic">Забрати гайд зі знижкою →</a>
   </div>
 </section>
 
