@@ -138,8 +138,8 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,summary:focus-visible{
 .book-tilt{transform-style:preserve-3d;transform:rotateX(0deg) rotateY(0deg) rotate(3deg);will-change:transform}
 .hero-art .book{width:min(320px,80vw);display:block;border-radius:16px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.08);animation:bookFloat 6s var(--ease-in-out) infinite}
 @keyframes bookFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-.hero-badge{position:absolute;top:-16px;left:-20px;z-index:2;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--dark);font-weight:800;font-size:16px;border-radius:50%;width:92px;height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;line-height:1.15;box-shadow:var(--shadow);transform:rotate(-10deg)}
-.hero-badge small{font-weight:700;font-size:10px;letter-spacing:.05em}
+.hero-badge{position:absolute;top:-7px;left:-18px;z-index:2;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--dark);font-weight:800;font-size:26px;border-radius:50%;width:205px;height:205px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;line-height:1.15;box-shadow:var(--shadow);transform:rotate(-10deg)}
+.hero-badge small{font-weight:700;font-size:13px;letter-spacing:.05em}
 
 /* Section heads */
 .sec-head{text-align:center;margin-bottom:48px}
@@ -267,6 +267,8 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,summary:focus-visible{
 .site-footer{background:var(--dark);color:#b9ab99;padding:36px 0}
 .footer-row{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
 .disclaimer{font-size:12.5px;max-width:640px;line-height:1.6}
+.note-star{color:var(--gold2);text-decoration:none;font-weight:700;margin-left:2px}
+.note-star:hover{text-decoration:underline}
 .footer-links{display:flex;gap:18px;font-size:13px;white-space:nowrap}
 .footer-links a{text-decoration:none;color:#cdbfae}
 
