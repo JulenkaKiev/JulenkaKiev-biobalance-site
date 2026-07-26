@@ -1,0 +1,22 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Karaoke,Inter,72,&H0056A1C9,&H00E7F1F7,&H00110F0D,&H00000000,-1,0,0,0,100,100,0,0,1,6,0,2,60,60,260,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:03.81,Karaoke,,0,0,0,,{\k59}Втомилась {\k14}від {\k42}спорту {\k8}й {\k70}дієт, {\k43}які {\k48}нічого {\k10}не {\k72}дають?...
+Dialogue: 0,0:00:04.04,0:00:05.49,Karaoke,,0,0,0,,{\k55}Пробувала {\k19}вже {\k57}все.
+Dialogue: 0,0:00:05.62,0:00:07.36,Karaoke,,0,0,0,,{\k7}І {\k27}воно {\k36}просто {\k12}не {\k78}працює.
+Dialogue: 0,0:00:07.59,0:00:11.03,Karaoke,,0,0,0,,{\k24}Але {\k15}є {\k74}спосіб, {\k41}який {\k45}працює {\k20}вже {\k42}багато {\k67}років.
+Dialogue: 0,0:00:11.48,0:00:14.11,Karaoke,,0,0,0,,{\k27}Цей {\k42}гайд {\k42}дає {\k48}повне {\k89}розуміння:
+Dialogue: 0,0:00:14.20,0:00:16.84,Karaoke,,0,0,0,,{\k56}навіщо {\k36}це {\k36}і {\k8}з {\k32}чого {\k81}почати.
+Dialogue: 0,0:00:17.02,0:00:19.02,Karaoke,,0,0,0,,{\k17}Не {\k62}відкладай {\k30}себе {\k10}на {\k65}завтра.
+Dialogue: 0,0:00:19.14,0:00:21.26,Karaoke,,0,0,0,,{\k51}Почни {\k45}діяти {\k20}вже {\k80}сьогодні.
+Dialogue: 0,0:00:21.43,0:00:23.46,Karaoke,,0,0,0,,{\k50}Забери {\k32}гайд {\k15}зі {\k91}знижкою.
