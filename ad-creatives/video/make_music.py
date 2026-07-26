@@ -2,7 +2,7 @@ import numpy as np
 from scipy.io import wavfile
 
 SR = 44100
-DURATION = 22.88
+DURATION = 24.2
 N = int(SR * DURATION)
 
 t = np.linspace(0, DURATION, N, endpoint=False)
