@@ -1,1 +1,4 @@
 .DS_Store
+ad-creatives/
+node_modules/
+.netlify/
