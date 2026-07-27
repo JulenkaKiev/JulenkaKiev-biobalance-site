@@ -194,6 +194,14 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,summary:focus-visible{
 .res-card h3{font-size:17px;margin:10px 0 6px;font-weight:700}
 .res-card p{font-size:14px;color:var(--muted)}
 
+/* Testimonials */
+.testimonials{padding:96px 0}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:960px;margin:36px auto 0}
+.testi-card{background:#fff;border:1px dashed #d8b98a;border-radius:18px;padding:30px 24px;text-align:center}
+.testi-avatar{width:56px;height:56px;border-radius:50%;background:var(--cream2);color:var(--gold2);font-family:'Playfair Display';font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.testi-quote{font-size:14.5px;color:var(--muted);font-style:italic;margin-bottom:14px;min-height:40px}
+.testi-name{font-size:13.5px;font-weight:700;color:var(--gold2)}
+
 /* Protocol */
 .protocol{background:var(--cream2);padding:90px 0}
 .protocol-grid{display:grid;grid-template-columns:1fr .85fr;gap:56px;align-items:center}

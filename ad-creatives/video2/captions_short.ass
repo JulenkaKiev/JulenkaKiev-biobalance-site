@@ -1,0 +1,18 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Karaoke,Inter,72,&H0056A1C9,&H00E7F1F7,&H00110F0D,&H00000000,-1,0,0,0,100,100,0,0,1,6,0,2,60,60,260,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:03.27,Karaoke,,0,0,0,,{\k55}Втомилась {\k15}від {\k44}спорту {\k9}й {\k62}дієт, {\k37}які {\k10}не {\k80}працюють?
+Dialogue: 0,0:00:03.56,0:00:05.99,Karaoke,,0,0,0,,{\k15}Є {\k66}спосіб, {\k37}який {\k39}працює {\k70}роками.
+Dialogue: 0,0:00:06.22,0:00:08.82,Karaoke,,0,0,0,,{\k33}Гайд {\k22}дає {\k36}повне {\k50}розуміння {\k6}з {\k29}чого {\k70}почати.
+Dialogue: 0,0:00:09.11,0:00:11.61,Karaoke,,0,0,0,,{\k17}Не {\k67}відкладай {\k26}— {\k52}почни {\k72}сьогодні.
+Dialogue: 0,0:00:11.78,0:00:14.04,Karaoke,,0,0,0,,{\k43}Забери {\k41}гайд {\k35}зі {\k92}знижкою.
