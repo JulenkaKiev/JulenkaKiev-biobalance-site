@@ -31,7 +31,7 @@ if (testiGrid) {
         const avatar = t.photoId
           ? `<img class="testi-photo" src="/.netlify/functions/photo?id=${t.photoId}" alt="${t.name}">`
           : `<div class="testi-avatar">${(t.name || "?").charAt(0).toUpperCase()}</div>`;
-        card.innerHTML = `${avatar}<div class="testi-quote">${t.quote}</div><div class="testi-name">${t.name}</div>`;
+        card.innerHTML = `${avatar}<div class="testi-body"><div class="testi-quote">${t.quote}</div><div class="testi-name">${t.name}</div></div>`;
         testiGrid.appendChild(card);
       });
     })
