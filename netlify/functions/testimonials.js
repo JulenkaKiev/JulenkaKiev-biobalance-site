@@ -1,4 +1,4 @@
-const { getStore } = require("@netlify/blobs");
+const { getStore, connectLambda } = require("@netlify/blobs");
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "biobalance2026";
 const MAX_PHOTO_BYTES = 4 * 1024 * 1024; // 4MB safety cap
@@ -12,6 +12,7 @@ function json(status, body) {
 }
 
 exports.handler = async (event) => {
+  connectLambda(event);
   const dataStore = getStore("testimonials-data");
   const photoStore = getStore("testimonial-photos");
 

@@ -1,4 +1,4 @@
-const { getStore } = require("@netlify/blobs");
+const { getStore, connectLambda } = require("@netlify/blobs");
 
 exports.handler = async (event) => {
   const id = event.queryStringParameters && event.queryStringParameters.id;
@@ -6,6 +6,7 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: "Missing id" };
   }
 
+  connectLambda(event);
   const photoStore = getStore("testimonial-photos");
   const result = await photoStore.getWithMetadata(id, { type: "arrayBuffer" });
 
