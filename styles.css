@@ -196,8 +196,12 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,summary:focus-visible{
 
 /* Testimonials */
 .testimonials{padding:96px 0}
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:960px;margin:36px auto 0}
-.testi-card{background:#fff;border:1px solid #e7dbc9;border-radius:18px;overflow:hidden;text-align:center;box-shadow:0 12px 30px -22px rgba(30,20,10,.5);display:flex;flex-direction:column}
+.testi-scroll{margin:36px auto 0;max-width:960px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;padding:4px 4px 14px}
+.testi-scroll::-webkit-scrollbar{height:6px}
+.testi-scroll::-webkit-scrollbar-thumb{background:var(--gold);border-radius:6px}
+.testi-grid{display:flex;gap:18px}
+.testi-card{flex:0 0 260px;scroll-snap-align:center;background:#fff;border:1px solid #e7dbc9;border-radius:18px;overflow:hidden;text-align:center;box-shadow:0 12px 30px -22px rgba(30,20,10,.5);display:flex;flex-direction:column}
+@media (min-width:640px){.testi-card{flex:0 0 280px}}
 [data-placeholder] .testi-card{border:1px dashed #d8b98a;box-shadow:none}
 .testi-avatar{width:100%;aspect-ratio:3/4;background:var(--cream2);color:var(--gold2);font-family:'Playfair Display';font-size:48px;font-weight:800;display:flex;align-items:center;justify-content:center}
 .testi-photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top center;display:block}
