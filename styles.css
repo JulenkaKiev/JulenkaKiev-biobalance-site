@@ -237,10 +237,10 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,summary:focus-visible{
   .founder-grid{grid-template-columns:1fr;gap:44px}
   .founder-visual{max-width:280px}
   .chip-1,.chip-2,.chip-3,.chip-4{left:auto;right:auto}
-  .chip-1{top:6%;left:-8%}
-  .chip-2{top:32%;right:-10%}
-  .chip-3{bottom:20%;left:-10%}
-  .chip-4{bottom:-2%;right:-4%}
+  .chip-1{top:6%;left:0}
+  .chip-2{top:32%;right:0}
+  .chip-3{bottom:20%;left:0}
+  .chip-4{bottom:-2%;right:10%}
 }
 .protocol h2{font-size:clamp(26px,3.6vw,38px);font-weight:800;margin:14px 0 16px;color:var(--ink)}
 .protocol p{color:var(--muted);font-size:15.5px;max-width:480px}
