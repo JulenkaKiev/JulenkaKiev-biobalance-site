@@ -28,7 +28,14 @@
 .list-item .body{flex:1}
 .list-item .name{font-weight:700;font-size:14px}
 .list-item .quote{font-size:13.5px;color:var(--muted);margin-top:4px}
-.list-item button{border:none;background:none;color:#b3382c;font-size:13px;cursor:pointer;text-decoration:underline}
+.list-item button{border:none;background:none;color:#b3382c;font-size:13px;cursor:pointer;text-decoration:underline;margin-right:14px}
+.list-item .change-photo{position:relative;display:inline-block;font-size:13px;color:var(--gold2);cursor:pointer;text-decoration:underline}
+.list-item .change-photo input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.founder-admin{border:1px solid #e7dbc9;border-radius:14px;padding:20px;margin-bottom:40px;background:#fff}
+.founder-admin h2{font-size:18px;margin-bottom:4px}
+.founder-admin .sub{margin-bottom:16px}
+.founder-admin-row{display:flex;gap:16px;align-items:center}
+.founder-admin-row img{width:88px;height:88px;border-radius:12px;object-fit:cover;background:var(--cream2);flex-shrink:0}
 #gate{max-width:360px;margin:120px auto;text-align:center}
 #gate input{width:100%;padding:14px;border:1px solid #e7dbc9;border-radius:10px;margin-bottom:14px;font-size:15px}
 </style>
@@ -43,6 +50,19 @@
 </div>
 
 <div class="admin-wrap" id="adminPanel" style="display:none">
+  <div class="founder-admin">
+    <h2 class="pf">Фото авторки (Юлія)</h2>
+    <p class="sub" style="margin-bottom:14px">Фото у блоці "Привіт, я Юлія" на сайті.</p>
+    <div class="founder-admin-row">
+      <img id="founderPreview" src="/.netlify/functions/founder" onerror="this.style.display='none'">
+      <div class="admin-field" style="margin:0;flex:1">
+        <input type="file" id="founderPhotoInput" accept="image/*">
+      </div>
+    </div>
+    <button type="button" id="founderSaveBtn" class="btn btn-gold btn-wide" style="margin-top:14px">Зберегти фото</button>
+    <div id="founderMsg" class="admin-msg"></div>
+  </div>
+
   <h1 class="pf">Відгуки для сайту</h1>
   <p class="sub">Додайте текст і, за бажанням, фото — з'явиться на сайті одразу після збереження.</p>
 
@@ -110,6 +130,50 @@ document.getElementById('fPhoto').addEventListener('change', async (e) => {
   preview.style.display = 'block';
 });
 
+document.getElementById('founderSaveBtn').addEventListener('click', async () => {
+  const msg = document.getElementById('founderMsg');
+  msg.className = 'admin-msg';
+  msg.style.display = 'none';
+
+  const file = document.getElementById('founderPhotoInput').files[0];
+  if (!file) {
+    msg.textContent = 'Виберіть файл фото';
+    msg.className = 'admin-msg err';
+    return;
+  }
+
+  const dataUrl = await resizeImage(file);
+  const photoBase64 = dataUrl.split(',')[1];
+
+  try {
+    const res = await fetch('/.netlify/functions/founder', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: PASSWORD, photoBase64, photoType: 'image/jpeg' }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Помилка');
+    msg.textContent = 'Фото збережено!';
+    msg.className = 'admin-msg ok';
+    document.getElementById('founderPreview').style.display = 'block';
+    document.getElementById('founderPreview').src = '/.netlify/functions/founder?t=' + Date.now();
+  } catch (err) {
+    msg.textContent = err.message;
+    msg.className = 'admin-msg err';
+  }
+});
+
+async function changeTestimonialPhoto(id, file) {
+  const dataUrl = await resizeImage(file);
+  const photoBase64 = dataUrl.split(',')[1];
+  await fetch('/.netlify/functions/testimonials', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ password: PASSWORD, id, photoBase64, photoType: 'image/jpeg' }),
+  });
+  loadList();
+}
+
 document.getElementById('testiForm').addEventListener('submit', async (e) => {
   e.preventDefault();
   const msg = document.getElementById('formMsg');
@@ -161,9 +225,14 @@ async function loadList() {
         <div class="name">${t.name}</div>
         <div class="quote">${t.quote}</div>
         <button data-id="${t.id}">Видалити</button>
+        <label class="change-photo">Змінити фото<input type="file" accept="image/*" data-id="${t.id}"></label>
       </div>
     `;
     div.querySelector('button').addEventListener('click', () => deleteEntry(t.id));
+    div.querySelector('.change-photo input').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) changeTestimonialPhoto(t.id, file);
+    });
     list.appendChild(div);
   });
 }

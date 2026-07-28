@@ -21,7 +21,7 @@ exports.handler = async (event) => {
       statusCode: 204,
       headers: {
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type",
       },
       body: "",
@@ -74,6 +74,50 @@ exports.handler = async (event) => {
     list.unshift(entry);
     await dataStore.setJSON("list", list);
 
+    return json(200, { ok: true, entry });
+  }
+
+  if (event.httpMethod === "PUT") {
+    let payload;
+    try {
+      payload = JSON.parse(event.body || "{}");
+    } catch {
+      return json(400, { error: "Bad JSON" });
+    }
+
+    if (payload.password !== ADMIN_PASSWORD) {
+      return json(401, { error: "Невірний пароль" });
+    }
+
+    if (!payload.id) {
+      return json(400, { error: "Немає id" });
+    }
+
+    const list = (await dataStore.get("list", { type: "json" })) || [];
+    const entry = list.find((t) => t.id === payload.id);
+    if (!entry) {
+      return json(404, { error: "Відгук не знайдено" });
+    }
+
+    if (payload.name) entry.name = payload.name.trim().slice(0, 80);
+    if (payload.quote) entry.quote = payload.quote.trim().slice(0, 500);
+
+    if (payload.photoBase64) {
+      const buffer = Buffer.from(payload.photoBase64, "base64");
+      if (buffer.length > MAX_PHOTO_BYTES) {
+        return json(400, { error: "Фото занадто велике" });
+      }
+      if (entry.photoId) {
+        await photoStore.delete(entry.photoId);
+      }
+      const photoId = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+      await photoStore.set(photoId, buffer, {
+        metadata: { contentType: payload.photoType || "image/jpeg" },
+      });
+      entry.photoId = photoId;
+    }
+
+    await dataStore.setJSON("list", list);
     return json(200, { ok: true, entry });
   }
 
