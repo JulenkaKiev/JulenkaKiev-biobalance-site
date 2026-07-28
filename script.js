@@ -13,6 +13,31 @@ if (PAYMENT_LINK) {
 const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const hasFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
+// Load real testimonials (if any have been added via /admin.html); keep placeholders otherwise
+const testiGrid = document.getElementById("testiGrid");
+if (testiGrid) {
+  fetch("/.netlify/functions/testimonials")
+    .then((r) => (r.ok ? r.json() : null))
+    .then((data) => {
+      const list = data && data.testimonials;
+      if (!list || !list.length) return;
+      testiGrid.innerHTML = "";
+      testiGrid.removeAttribute("data-placeholder");
+      const subtitle = document.getElementById("testiSubtitle");
+      if (subtitle) subtitle.textContent = "Реальні враження від тих, хто вже прочитав гайд";
+      list.slice(0, 6).forEach((t, i) => {
+        const card = document.createElement("div");
+        card.className = "testi-card reveal on";
+        const avatar = t.photoId
+          ? `<img class="testi-photo" src="/.netlify/functions/photo?id=${t.photoId}" alt="${t.name}">`
+          : `<div class="testi-avatar">${(t.name || "?").charAt(0).toUpperCase()}</div>`;
+        card.innerHTML = `${avatar}<div class="testi-quote">${t.quote}</div><div class="testi-name">${t.name}</div>`;
+        testiGrid.appendChild(card);
+      });
+    })
+    .catch(() => {});
+}
+
 // Scroll reveal
 const revealEls = document.querySelectorAll(".reveal");
 const revealObserver = new IntersectionObserver(

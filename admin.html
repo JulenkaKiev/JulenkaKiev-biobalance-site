@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Керування відгуками — BioBalance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+.admin-wrap{max-width:640px;margin:0 auto;padding:60px 24px 120px}
+.admin-wrap h1{font-size:28px;margin-bottom:8px}
+.admin-wrap .sub{color:var(--muted);margin-bottom:36px;font-size:14px}
+.admin-field{margin-bottom:18px;text-align:left}
+.admin-field label{display:block;font-size:13px;font-weight:700;color:var(--gold2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
+.admin-field input[type=text],.admin-field input[type=password],.admin-field textarea{width:100%;padding:12px 14px;border:1px solid #e7dbc9;border-radius:10px;font-family:'Inter';font-size:15px;background:#fff}
+.admin-field textarea{min-height:90px;resize:vertical}
+.admin-field input[type=file]{width:100%;padding:10px;border:1px dashed #d8b98a;border-radius:10px;background:#fff}
+#preview{max-width:160px;border-radius:10px;margin-top:10px;display:none}
+.admin-msg{margin-top:16px;font-size:14px;padding:12px 16px;border-radius:10px;display:none}
+.admin-msg.ok{background:#e9f5ee;color:#2f7a4d;display:block}
+.admin-msg.err{background:#fbeceb;color:#b3382c;display:block}
+.list-item{display:flex;gap:14px;align-items:flex-start;padding:16px;border:1px solid #e7dbc9;border-radius:12px;margin-bottom:12px;background:#fff}
+.list-item img{width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.list-item .no-photo{width:56px;height:56px;border-radius:50%;background:var(--cream2);flex-shrink:0}
+.list-item .body{flex:1}
+.list-item .name{font-weight:700;font-size:14px}
+.list-item .quote{font-size:13.5px;color:var(--muted);margin-top:4px}
+.list-item button{border:none;background:none;color:#b3382c;font-size:13px;cursor:pointer;text-decoration:underline}
+#gate{max-width:360px;margin:120px auto;text-align:center}
+#gate input{width:100%;padding:14px;border:1px solid #e7dbc9;border-radius:10px;margin-bottom:14px;font-size:15px}
+</style>
+</head>
+<body style="background:var(--cream2)">
+
+<div id="gate">
+  <h2 class="pf" style="margin-bottom:20px">Вхід</h2>
+  <input type="password" id="gatePassword" placeholder="Пароль">
+  <button class="btn btn-gold btn-wide" onclick="checkGate()">Увійти</button>
+  <div id="gateMsg" class="admin-msg err"></div>
+</div>
+
+<div class="admin-wrap" id="adminPanel" style="display:none">
+  <h1 class="pf">Відгуки для сайту</h1>
+  <p class="sub">Додайте текст і, за бажанням, фото — з'явиться на сайті одразу після збереження.</p>
+
+  <form id="testiForm">
+    <div class="admin-field">
+      <label>Ім'я</label>
+      <input type="text" id="fName" placeholder="Наприклад: Оксана" required>
+    </div>
+    <div class="admin-field">
+      <label>Текст відгуку</label>
+      <textarea id="fQuote" placeholder="Слова відгуку тут..." required></textarea>
+    </div>
+    <div class="admin-field">
+      <label>Фото (необов'язково)</label>
+      <input type="file" id="fPhoto" accept="image/*">
+      <img id="preview">
+    </div>
+    <button type="submit" class="btn btn-gold btn-wide">Додати відгук</button>
+    <div id="formMsg" class="admin-msg"></div>
+  </form>
+
+  <hr style="margin:40px 0;border:none;border-top:1px solid #e7dbc9">
+
+  <h2 class="pf" style="font-size:20px;margin-bottom:16px">Поточні відгуки</h2>
+  <div id="list"></div>
+</div>
+
+<script>
+let PASSWORD = "";
+
+function checkGate() {
+  const pw = document.getElementById('gatePassword').value;
+  document.getElementById('gate').style.display = 'none';
+  document.getElementById('adminPanel').style.display = 'block';
+  PASSWORD = pw;
+  loadList();
+}
+
+function resizeImage(file) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    const reader = new FileReader();
+    reader.onload = (e) => { img.src = e.target.result; };
+    img.onload = () => {
+      const maxW = 800;
+      const scale = Math.min(1, maxW / img.width);
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width * scale;
+      canvas.height = img.height * scale;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.82);
+      resolve(dataUrl);
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+document.getElementById('fPhoto').addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const dataUrl = await resizeImage(file);
+  const preview = document.getElementById('preview');
+  preview.src = dataUrl;
+  preview.style.display = 'block';
+});
+
+document.getElementById('testiForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const msg = document.getElementById('formMsg');
+  msg.className = 'admin-msg';
+  msg.style.display = 'none';
+
+  const name = document.getElementById('fName').value;
+  const quote = document.getElementById('fQuote').value;
+  const photoFile = document.getElementById('fPhoto').files[0];
+
+  let photoBase64 = null;
+  let photoType = null;
+  if (photoFile) {
+    const dataUrl = await resizeImage(photoFile);
+    photoBase64 = dataUrl.split(',')[1];
+    photoType = 'image/jpeg';
+  }
+
+  try {
+    const res = await fetch('/.netlify/functions/testimonials', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: PASSWORD, name, quote, photoBase64, photoType }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Помилка');
+    msg.textContent = 'Відгук додано!';
+    msg.className = 'admin-msg ok';
+    document.getElementById('testiForm').reset();
+    document.getElementById('preview').style.display = 'none';
+    loadList();
+  } catch (err) {
+    msg.textContent = err.message;
+    msg.className = 'admin-msg err';
+  }
+});
+
+async function loadList() {
+  const res = await fetch('/.netlify/functions/testimonials');
+  const data = await res.json();
+  const list = document.getElementById('list');
+  list.innerHTML = '';
+  (data.testimonials || []).forEach((t) => {
+    const div = document.createElement('div');
+    div.className = 'list-item';
+    div.innerHTML = `
+      ${t.photoId ? `<img src="/.netlify/functions/photo?id=${t.photoId}">` : '<div class="no-photo"></div>'}
+      <div class="body">
+        <div class="name">${t.name}</div>
+        <div class="quote">${t.quote}</div>
+        <button data-id="${t.id}">Видалити</button>
+      </div>
+    `;
+    div.querySelector('button').addEventListener('click', () => deleteEntry(t.id));
+    list.appendChild(div);
+  });
+}
+
+async function deleteEntry(id) {
+  if (!confirm('Видалити цей відгук?')) return;
+  await fetch('/.netlify/functions/testimonials', {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ password: PASSWORD, id }),
+  });
+  loadList();
+}
+</script>
+</body>
+</html>

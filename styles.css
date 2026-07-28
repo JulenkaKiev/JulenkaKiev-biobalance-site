@@ -197,8 +197,10 @@ a:focus-visible,button:focus-visible,.btn:focus-visible,summary:focus-visible{
 /* Testimonials */
 .testimonials{padding:96px 0}
 .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:960px;margin:36px auto 0}
-.testi-card{background:#fff;border:1px dashed #d8b98a;border-radius:18px;padding:30px 24px;text-align:center}
+.testi-card{background:#fff;border:1px solid #e7dbc9;border-radius:18px;padding:30px 24px;text-align:center;box-shadow:0 12px 30px -22px rgba(30,20,10,.5)}
+[data-placeholder] .testi-card{border:1px dashed #d8b98a;box-shadow:none}
 .testi-avatar{width:56px;height:56px;border-radius:50%;background:var(--cream2);color:var(--gold2);font-family:'Playfair Display';font-size:22px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.testi-photo{width:56px;height:56px;border-radius:50%;object-fit:cover;margin:0 auto 16px;display:block;border:2px solid var(--gold)}
 .testi-quote{font-size:14.5px;color:var(--muted);font-style:italic;margin-bottom:14px;min-height:40px}
 .testi-name{font-size:13.5px;font-weight:700;color:var(--gold2)}
 
